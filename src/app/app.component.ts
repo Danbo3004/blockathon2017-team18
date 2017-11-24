@@ -43,9 +43,9 @@ export class AppComponent {
       // Use Mist/MetaMask's provider
       this.web3 = new Web3(window.web3.currentProvider);
     } else {
-      console.warn(
+      /* console.warn(
         'No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it\'s inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask'
-      );
+      ); */
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       this.web3 = new Web3(
         new Web3.providers.HttpProvider('http://localhost:8545')
@@ -56,6 +56,7 @@ export class AppComponent {
   onReady = () => {
     // Bootstrap the MetaCoin abstraction for Use.
     this.MetaCoin.setProvider(this.web3.currentProvider);
+    // this.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
 
     // Get the initial account balance so it can be displayed.
     this.web3.eth.getAccounts((err, accs) => {
