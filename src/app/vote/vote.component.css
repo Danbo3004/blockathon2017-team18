@@ -41,6 +41,9 @@ body,html{
 body {
 font-family: 'Merriweather', serif;
   overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 ul{
@@ -972,20 +975,40 @@ div[data-dimension] {
 #imgBanner {
   background-image: url("../../assets/banner.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 120%;
   display: inline;
   float: left;
-  height: 300px;
-  margin-top: 77px;
-  padding: 118px 0;
+  height: 550px;
+  margin-top: 50px;
   text-align: center;
   min-width: 100%;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center!important;
+}
+.overlay button {
+  padding: 10px 5px;
+  margin-top: 250px;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+}
+.overlay button a {
+  color: #ffffff;
+}
+.btn-go-to {
+  transition-duration: 5s;
+}
+.overlay h2 {
+  padding-top: 150px;
+  text-align: center;
 }
 #imgBanner h2 {
   color: #fff;
   font-size: 72px;
   font-weight: bold;
-  text-align: center;
   text-transform: uppercase;
 }
 #courseArchive{

@@ -30,6 +30,7 @@ export class VoteComponent implements OnInit {
   voteCount = 0;
   id_program = 0;
   current_coin;
+  current_actor_id;
   constructor(private _ngZone: NgZone) {
   }
   @HostListener('window:load')
@@ -128,7 +129,11 @@ export class VoteComponent implements OnInit {
   ngOnInit() {
     this.votes = [];
   }
-  submitVote = (actor_id) => {
+  changeId = (i) => {
+    this.current_actor_id = Number(i);
+  }
+  submitVote = () => {
+    const actor_id = this.current_actor_id;
     let ballot;
     const self = this;
     this.Ballot.deployed().then(function (instance) {

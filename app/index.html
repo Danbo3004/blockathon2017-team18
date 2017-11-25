@@ -7,6 +7,23 @@
 </head>
 <body>
   <h2>Example Truffle Dapp</h2>
+  <br><label for="nspAddress">Address NSP:</label><input type="text" id="nspAddress" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+  <br><label for="nameNSP">name NSP:</label><input type="text" id="nameNSP" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+  <br><label for="init_balance">Init Balance:</label><input type="text" id="init_balance" placeholder="e.g., 95"></input>
+  <br><label for="password">Password: </label>:</label><input type="password" id="password" placeholder="e.g., "></input>
+  <br><br><button id="send" onclick="App.createNSP()">CREATE NSP</button>
+
+  <h2>Verify NSP</h2>
+  <br><label for="verify_addr">Address</label><input type="text" id="verify_addr" placeholder="e.g., 95"></input>
+  <br><label for="verify_pass">Password: </label>:</label><input type="verify_pass" id="verify_pass" placeholder="e.g., "></input>
+  <br><br><button id="send" onclick="App.verifyNSP()">verifyNSP NSP</button>
+
+  <h2>NSP send coin to User</h2>
+  <br><label for="verify_pass">Password: </label>:</label><input type="nsp_pass" id="nsp_pass" placeholder="e.g., "></input>
+  <br><label for="verify_addr">Address User</label><input type="text" id="to_user" placeholder="e.g., 95"></input>
+  <br><label for="verify_addr">Acount( The null coin )</label><input type="to_amount" id="to_amount" placeholder="e.g., 95"></input>
+  <br><br><button id="send" onclick="App.nspSendCoinToUser()"> NSP sendCoin to User</button>
+
   <br><span>Set Address</span>
   <br><label for="new_address">New Address:</label><input type="text" id="address_id" placeholder="e.g., 95"></input>
   <br><br><button id="send" onclick="App.setAddress()">SET New Address</button>
@@ -26,6 +43,8 @@
   <br><label for="id_program">Program ID:</label><input type="text" id="program_id" placeholder="e.g., 95"></input>
   <br><label for="id_actor">Actor ID: </label>:</label><input type="text" id="actor_id" placeholder="e.g., "></input>
   <br><br><button id="send" onclick="App.vote()">VOTE</button>
+  
+
   
   <span id="status"></span>
   <br>

@@ -31,7 +31,7 @@ contract Ballot {
 
     uint number_programs;
     mapping(uint => Program) public Programs;
-    mapping(uint => NSP) nsps;
+    mapping(address => NSP) nsps;
 
     function Ballot() {
         chairperson = tx.origin;
@@ -81,6 +81,41 @@ contract Ballot {
         require(msg.sender == chairperson);
         _;
     }
+
+    function createNSP(address addr, bytes32 name, bytes32 hash_password, uint init_balance) onlyChairPerson {
+        nsps[addr] = NSP({
+            name: name,
+            hash_password: hash_password
+        });
+        balances[chairperson] -= init_balance;
+        balances[addr] = init_balance;
+    }
+
+    function requestSendCoinByNSP(bytes32 hash_password, address to_acc, uint amount) {
+        NSP storage nsp = nsps[msg.sender];
+        if (nsp.hash_password == hash_password) {
+            commonSendCoin(to_acc, amount);
+        }
+    }
+
+    function verifyNSP(address nsp_addr, bytes32 hash_password) returns(bool) {
+        NSP storage nsp = nsps[nsp_addr];
+        return nsp.hash_password == hash_password;
+    }
+
+    function commonSendCoin(address to, uint amount) returns(bool) {
+        if(balances[msg.sender] < amount) {
+            return false;
+        }
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+    }
+
+    function getNSPHash(address addr) returns(bytes32) {
+        return nsps[addr].hash_password;
+    }
+
+
 
     function createProgram(bytes32 name, uint start, uint end, uint number_actor) returns (bool) {
         if(msg.sender == chairperson) {

@@ -161,6 +161,54 @@ window.App = {
   setAddress: function() {
     account = document.getElementById("address_id").value;
     console.log(account);
+  },
+
+  createNSP: function() {
+    var nspAddress = document.getElementById("nspAddress").value;
+    var name = document.getElementById("nameNSP").value;
+    var init_balance = parseInt(document.getElementById("init_balance").value);
+    var hass_password = web3.sha3(document.getElementById("password").value);
+    console.log(name);
+    console.log(init_balance);
+    console.log(hass_password);
+    console.log(nspAddress);
+
+    Ballot.deployed().then(function(instance) {
+      var ballot = instance;
+
+      return ballot.createNSP(nspAddress, name, hass_password, init_balance, {from: account});
+    }).then(function(value){
+        console.log(value);
+    }).catch(function(e){
+      console.log(e);
+    });
+  },
+
+  verifyNSP: function() {
+    var verify_addr = document.getElementById("verify_addr").value;
+    var verify_pass = web3.sha3(document.getElementById("verify_pass").value);
+    Ballot.deployed().then(function(instance) {
+      var ballot = instance;
+      return ballot.verifyNSP.call(verify_addr, verify_pass);
+    }).then(function(value){
+        console.log(value);
+    }).catch(function(e){
+      console.log(e);
+    });
+  },
+
+  nspSendCoinToUser: function () {
+    var hass_password = web3.sha3(document.getElementById("nsp_pass").value);    
+    var to_user = document.getElementById("to_user").value;
+    var total_amount = parseInt(document.getElementById("to_amount").value);
+    Ballot.deployed().then(function(instance) {
+      var ballot = instance;
+      return ballot.requestSendCoinByNSP(hass_password, to_user, total_amount, {from: account});
+    }).then(function(value){
+        console.log(value);
+    }).catch(function(e){
+      console.log(e);
+    });
   }
 };
 

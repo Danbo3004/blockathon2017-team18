@@ -1,5 +1,13 @@
+    
     <section id="imgBanner">
-      <h2>BLOCKCHAIN HACKATHON</h2>
+      <div class="overlay">
+        <h2>BLOCKCHAIN HACKATHON</h2>
+      <button class="btn-go-to">
+        <a href="/vote#courseArchive">
+           LET'S VOTE for YOUR FAVORITE TEAM
+        </a>
+      </button>
+      </div>
     </section>
     <section id="courseArchive">
       <div class="container">
@@ -15,37 +23,37 @@
                           <div class="singCourse_imgarea">
                             <img src="../../assets/team{{i+1}}.jpg" />
                             <div class="mask">                         
-                              <a class="course_more" data-toggle="modal" data-target="#myModal" >VOTE</a>
+                              <a class="course_more" data-toggle="modal" data-target="#myModal" (click)="changeId(i)">VOTE</a>
                             </div>
                           </div>
                           <div class="singCourse_content">
-                              <div class="modal fade" id="myModal" role="dialog">
-                                  <div class="modal-dialog">
-                                  
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">You have: {{current_coin}} coins</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                          <label for="usr">Enter your point:</label>
-                                          <input type="text" class="form-control" [(ngModel)]="wei" id="usr">
-                                          <div class="row btn-group">
-                                            <button type="button" class="btn btn-primary"  (click)="submitVote(i)"  data-dismiss="modal">VOTE</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                              
                           <h3 class="singCourse_title">Team {{actor.name}}</h3>
-                          <p class="singCourse_price"><span>10 HedspiCoin</span> Per One Point</p>  
+                          <p class="singCourse_price"><span>{{actor.vote_count}} Votes </span> </p>  
                           </div>
                         </div>
                       </div>
                     </ng-container>
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
                 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">You have: {{current_coin}} coins</h4>
+                      </div>
+                      <div class="modal-body">
+                        <label for="usr">Enter your point:</label>
+                        <input type="number" class="form-control" [(ngModel)]="wei" id="usr">
+                        <div class="row btn-group">
+                          <button type="button" class="btn btn-primary" (click)="submitVote()" data-dismiss="modal">VOTE</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <!-- End single course -->
               </div>
               <!-- start previous & next button -->

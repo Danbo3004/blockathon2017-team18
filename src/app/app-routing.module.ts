@@ -8,7 +8,7 @@ import { SendComponent } from 'app/send/send.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: VoteComponent
   },
   {
     path: 'home',

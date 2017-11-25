@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+/* pragma solidity ^0.4.2;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
@@ -6,8 +6,7 @@ import "../contracts/Ballot.sol";
 
 contract TestBallot {
 
-<<<<<<< HEAD
-  function testInitialBalanceUsingDeployedContract() {
+function testInitialBalanceUsingDeployedContract() {
     Ballot ballot = Ballot(DeployedAddresses.Ballot());
 
     uint expected = 10000;
@@ -29,7 +28,6 @@ contract TestBallot {
     address account = 0x8a02c171e3431f464be91d27cd66ed96c9534e86;
     ballot.sendCoin(to, 1);
     Assert.equal(ballot.getBalance(tx.origin), expected, "Owner should have 10000 MetaCoin initially");
-=======
   // function testInitialBalanceUsingDeployedContract() {
   //   Ballot ballot = Ballot(DeployedAddresses.Ballot());
 
@@ -111,12 +109,21 @@ contract TestBallot {
   //   Assert.equal(name, "Manhd", "Error");
   // }
 
-  function testGetBalances() {
-    Ballot ballot = Ballot(DeployedAddresses.Ballot());
-    Assert.equal(ballot.getBalance(tx.origin), 100000, "Error");
-    address addr = 0xda0677d2d5c02eca1ef90d99ce3fb96eb60855cd;
-    Assert.equal(ballot.isChair(addr), true, "Error");
+  // function testGetBalances() {
+  //   Ballot ballot = Ballot(DeployedAddresses.Ballot());
+  //   Assert.equal(ballot.getBalance(tx.origin), 100000, "Error");
+  //   address addr = 0xda0677d2d5c02eca1ef90d99ce3fb96eb60855cd;
+  //   Assert.equal(ballot.isChair(addr), true, "Error");
     
->>>>>>> b15f1e3d80c79997d3af07a2b321202447a81933
+
+  // }
+
+  function testCreateNSP() {
+    Ballot ballot = Ballot(DeployedAddresses.Ballot());
+    bytes32 name = "nsp name";
+    bytes32 hash_password = sha3("123456");
+    ballot.createNSP(tx.origin, name, hash_password);
+    Assert.equal(ballot.getNSPHash(tx.origin), hash_password, "Error");
   }
 }
+ */
