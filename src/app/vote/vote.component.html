@@ -1,17 +1,65 @@
-<h1>Votes</h1>
-<form #f="ngForm" (ngSubmit)="submitVote(f)" novalidate>
-
-<div class="items" >
-  <ng-container *ngFor="let actor of actors">
-    <input id="item{{actor.id}}" name="item{{actor.id}}" type="checkbox" (change)="addVotes(actor.id)">
-    <label for="item{{actor.id}}">{{actor.name}}</label>
-  </ng-container>
-  <h2 class="done" aria-hidden="true">Voted</h2>
-  <h2 class="undone" aria-hidden="true">Not vote</h2>
-
-</div>
-<div id="submit_vote">
-  <button type="submit">submit</button>
-</div>
-  </form>
-
+    <section id="imgBanner">
+      <h2>BLOCKCHAIN HACKATHON</h2>
+    </section>
+    
+    <section id="courseArchive">
+      <div class="container">
+        <div class="row">
+          <!-- start course content -->
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="courseArchive_content">
+              <div class="row">
+                <!-- start single course -->
+                <form #f="ngForm" (ngSubmit)="submitVote(f)" novalidate>
+                    <ng-container *ngFor="let actor of actors">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="single_course wow fadeInUp">
+                          <div class="singCourse_imgarea">
+                            <img src="../../assets/team{{actor.id}}.jpg" />
+                            <div class="mask">                         
+                              <a class="course_more" data-toggle="modal" data-target="#myModal" >VOTE</a>
+                            </div>
+                          </div>
+                          <div class="singCourse_content">
+                              <div class="modal fade" id="myModal" role="dialog">
+                                  <div class="modal-dialog">
+                                  
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Vote</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                          <label for="usr">Enter your point:</label>
+                                          <input type="text" class="form-control" id="usr">
+                                          <div class="row btn-group">
+                                            <button type="button" class="btn btn-primary">VOTE</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          </div>
+                                      </div>
+                                      
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                          <h3 class="singCourse_title">Team {{actor.name}}</h3>
+                          <p class="singCourse_price"><span>10 HedspiCoin</span> Per One Point</p>  
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                </form>
+                
+                <!-- End single course -->
+              </div>
+              <!-- start previous & next button -->
+              <div class="single_blog_prevnext">
+                <a href="#" class="prev_post wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"><i class="fa fa-angle-left"></i>Previous</a>
+                <a href="#" class="next_post wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">Next<i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
