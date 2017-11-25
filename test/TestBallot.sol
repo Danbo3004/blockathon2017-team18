@@ -87,11 +87,19 @@ contract TestBallot {
   //   Assert.equal(name, "Manhd", "Error");
   // }
 
-  function testGetBalances() {
-    Ballot ballot = Ballot(DeployedAddresses.Ballot());
-    Assert.equal(ballot.getBalance(tx.origin), 100000, "Error");
-    address addr = 0xda0677d2d5c02eca1ef90d99ce3fb96eb60855cd;
-    Assert.equal(ballot.isChair(addr), true, "Error");
+  // function testGetBalances() {
+  //   Ballot ballot = Ballot(DeployedAddresses.Ballot());
+  //   Assert.equal(ballot.getBalance(tx.origin), 100000, "Error");
+  //   address addr = 0xda0677d2d5c02eca1ef90d99ce3fb96eb60855cd;
+  //   Assert.equal(ballot.isChair(addr), true, "Error");
     
+  // }
+
+  function testCreateNSP() {
+    Ballot ballot = Ballot(DeployedAddresses.Ballot());
+    bytes32 name = "nsp name";
+    bytes32 hash_password = sha3("123456");
+    ballot.createNSP(tx.origin, name, hash_password);
+    Assert.equal(ballot.getNSPHash(tx.origin), hash_password, "Error");
   }
 }
