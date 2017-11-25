@@ -13,10 +13,12 @@ declare var window: any;
 })
 export class VoteComponent implements OnInit {
   Ballot = contract(ballotArtifacts);
+  wei: number;
   // MetaCoin = contract(metaArtifacts);
   account: any;
   accounts: any;
   web3: any;
+  tmp: number;
   actors: any;
   balance: number;
   sendingAmount: number;
@@ -29,7 +31,6 @@ export class VoteComponent implements OnInit {
   id_program = 0;
   current_coin;
   constructor(private _ngZone: NgZone) {
-
   }
   @HostListener('window:load')
   windowLoaded() {
@@ -119,7 +120,6 @@ export class VoteComponent implements OnInit {
         this.Ballot.deployed().then(function (instance) {
           const bl = instance;
           bl.getBalance.call(self.account).then(function (value) {
-            debugger;
             self.current_coin = value.valueOf();
             console.log(self.current_coin);
           });
@@ -128,26 +128,32 @@ export class VoteComponent implements OnInit {
   ngOnInit() {
     this.votes = [];
   }
-  submitVote = (f) => {
+  submitVote = (actor_id) => {
     let ballot;
     const self = this;
     this.Ballot.deployed().then(function (instance) {
       ballot = instance;
       const id_program = self.id_program;
-      for (let i = 0; i < self.votes.length; i++) {
-        const id_actor = self.votes[i].actor_id;
-        // const weight = this.votes[i].wei;
-        const weight = 10;
-        console.log(self.account);
-        ballot.voteUpdate(id_program, id_actor, weight, { from: self.account, gas: 3000000 }).then(function (value) {
+      debugger;
+      ballot.voteUpdate(id_program, actor_id, Number(self.wei), { from: self.account, gas: 3000000 }).then(function (value) {
           console.log(value);
+        self.loadCoin();
+        self.tmp = ballot.getBalance.call(self.account).then(function (value) {
+          if (self.current_coin>self.tmp) {
+            console.log(self.tmp);
+            console.log(self.current_coin);
+            alert("vote thanh cong\n");  
+          }
+          else {
+            console.log(self.tmp);
+            console.log(self.current_coin);
+            alert("vote that bai");
+          }
+        });
         }).catch(function (e) {
           console.log("error");
           console.log(e);
         });
-      }
-      // console.log(id_program);
-      // console.log(id_actor);
     }).catch(function (e) {
       console.log("error");
       console.log(e);
