@@ -47,7 +47,7 @@ contract Ballot {
         // createActor(id_program, "Thi sinh 5");
         uint id_program;
         Programs[id_program] = Program({
-            name: "The Voice",
+            name: "Blockathon",
             start: now,
             end: now + 2*1 days,
             number_actors: 0,
@@ -56,23 +56,23 @@ contract Ballot {
         
         Programs[id_program].number_actors = 5;
         Programs[id_program].actors[0] = Actor({
-            name: "Son Tung MTP",
+            name: "The NULL",
             vote_count: 0
         });
         Programs[id_program].actors[1] = Actor({
-            name: "Noo Phuoc Thinh",
+            name: "Ha Thanh",
             vote_count: 0
         });
         Programs[id_program].actors[2] = Actor({
-            name: "Chipu",
+            name: "YOLO Team",
             vote_count: 0
         }); 
         Programs[id_program].actors[3] = Actor({
-            name: "ISSAC",
+            name: "GenStack",
             vote_count: 0
         }); 
         Programs[id_program].actors[4] = Actor({
-            name: "Huong Tram",
+            name: "HCM Teams",
             vote_count: 0
         }); 
     }
