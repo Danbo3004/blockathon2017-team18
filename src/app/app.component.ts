@@ -18,7 +18,7 @@ export class AppComponent {
   account: any;
   accounts: any;
   web3: any;
-
+  actors: any;
   balance: number;
   sendingAmount: number;
   recipientAddress: string;
@@ -55,6 +55,14 @@ export class AppComponent {
   };
 
   onReady = () => {
+    this.actors = [
+      {id: 1, name: 'Actor 1'},
+      { id: 1, name: 'Actor 1' },
+      { id: 2, name: 'Actor 2' },
+      { id: 3, name: 'Actor 3' },
+      { id: 4, name: 'Actor 4' },
+      { id: 5, name: 'Actor 5' },
+    ]
     // Bootstrap the MetaCoin abstraction for Use.
     this.MetaCoin.setProvider(this.web3.currentProvider);
     // this.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));

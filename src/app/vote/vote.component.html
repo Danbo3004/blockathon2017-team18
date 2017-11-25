@@ -1,0 +1,17 @@
+<h1>Votes</h1>
+<form #f="ngForm" (ngSubmit)="submitVote(f)" novalidate>
+
+<div class="items" >
+  <ng-container *ngFor="let actor of actors">
+    <input id="item{{actor.id}}" name="item{{actor.id}}" type="checkbox" (change)="addVotes(actor.id)">
+    <label for="item{{actor.id}}">{{actor.name}}</label>
+  </ng-container>
+  <h2 class="done" aria-hidden="true">Voted</h2>
+  <h2 class="undone" aria-hidden="true">Not vote</h2>
+
+</div>
+<div id="submit_vote">
+  <button type="submit">submit</button>
+</div>
+  </form>
+

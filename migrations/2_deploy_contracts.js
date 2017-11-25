@@ -5,8 +5,8 @@ var Ballot = artifacts.require("./Ballot.sol");
 module.exports = function(deployer) {
   deployer.deploy(ConvertLib);
   // deployer.link(ConvertLib, MetaCoin);
-  // deployer.link(ConvertLib, MetaCoin);
-  // deployer.deploy(MetaCoin);
+  deployer.link(ConvertLib, MetaCoin);
+  deployer.deploy(MetaCoin);
   deployer.deploy(Ballot);
 };
 
