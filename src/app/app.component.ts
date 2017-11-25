@@ -1,14 +1,15 @@
 import { Component, HostListener, NgZone } from '@angular/core';
 const Web3 = require('web3');
 const contract = require('truffle-contract');
-const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
+const metaincoinArtifacts = require('../../build/contracts/Ballot.json');
 import { canBeNumber } from '../util/validation';
 
 declare var window: any;
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   MetaCoin = contract(metaincoinArtifacts);
@@ -23,7 +24,7 @@ export class AppComponent {
   recipientAddress: string;
   status: string;
   canBeNumber = canBeNumber;
-
+  publicKey: string;
   constructor(private _ngZone: NgZone) {
 
   }
@@ -73,6 +74,7 @@ export class AppComponent {
       }
       this.accounts = accs;
       this.account = this.accounts[0];
+      // this.account =
 
       // This is run from window:load and ZoneJS is not aware of it we
       // need to use _ngZone.run() so that the UI updates on promise resolution
@@ -100,7 +102,26 @@ export class AppComponent {
         this.setStatus('Error getting balance; see log.');
       });
   };
-
+  getPublicKey = () => {
+    console.log(this.publicKey);
+    this.MetaCoin
+      .deployed()
+      .then(instance => {
+        // console.log(this.accounts[0])
+        return instance.getBalance.call(this.publicKey, {
+          from: this.publicKey
+        });
+      })
+      .then((value) => {
+        // this.setStatus('Transaction complete!');
+        // this.refreshBalance();
+        console.log(value)
+      })
+      .catch(e => {
+        console.log(e);
+        this.setStatus('Error sending coin; see log.');
+      });
+  }
   setStatus = message => {
     this.status = message;
   };
