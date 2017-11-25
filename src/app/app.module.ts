@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 // import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { VoteComponent } from './vote/vote.component';
+import { SendComponent } from './send/send.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { VoteComponent } from './vote/vote.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    VoteComponent
+    VoteComponent,
+    SendComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

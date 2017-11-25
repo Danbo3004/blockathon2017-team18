@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { VoteComponent } from 'app/vote/vote.component';
+import { SendComponent } from 'app/send/send.component';
 
 const appRoutes: Routes = [
   {
@@ -17,6 +18,10 @@ const appRoutes: Routes = [
     path: 'vote',
     component: VoteComponent
   },
+  {
+    path: 'send',
+    component: SendComponent
+  }
 ];
 
 @NgModule({

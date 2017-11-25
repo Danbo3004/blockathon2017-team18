@@ -1,0 +1,85 @@
+<p></p>
+<p></p>
+<div class="send_div">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#home">Send to Another account</a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#menu1">Create NSP</a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#menu2">From NSP to account</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <div class="sendcoin_container row">
+        <div class="form-group">
+          <div class="col-md-8 col-md-offset-2">
+            <label for="coin" class="label-control">Coin</label>
+            <input type="text" name="coin" [(ngModel)]="amount" class="form-control">
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <label for="address" class="label-control">Address</label>
+            <input type="text" name="address" [(ngModel)]="receiver" class="form-control">
+          </div>
+          <div class="col-md-2 col-md-offset-5">
+            <button class="btn btn-success" (click)="sendCoin()">Send coin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <div id="home" class="tab-pane fade in active">
+        <div class="sendcoin_container row">
+          <div class="form-group">
+            <div class="col-md-8 col-md-offset-2">
+              <label for="nspAddress" class="label-control">Address</label>
+              <input type="text" name="nspAddress" [(ngModel)]="nspAddress" class="form-control">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+              <label for="name" class="label-control">Name</label>
+              <input type="text" name="name" [(ngModel)]="name" class="form-control">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+              <label for="init_balance" class="label-control">Init Balance</label>
+              <input type="text" name="init_balance" [(ngModel)]="init_balance" class="form-control">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+              <label for="password" class="label-control">Password</label>
+              <input type="password" name="password" [(ngModel)]="password" class="form-control">
+            </div>
+            <div class="col-md-2 col-md-offset-5">
+              <button class="btn btn-success" (click)="createNSP()">Send coin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <div id="home" class="tab-pane fade in active">
+        <div class="sendcoin_container row">
+          <div class="form-group">
+            <div class="col-md-8 col-md-offset-2">
+              <label for="to_user" class="label-control">Account Address</label>
+              <input type="text" name="to_user" [(ngModel)]="to_user" class="form-control">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+              <label for="total_amount" class="label-control">Amount</label>
+              <input type="text" name="total_amount" [(ngModel)]="total_amount" class="form-control">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+              <label for="password" class="label-control">Password</label>
+              <input type="password" name="password" [(ngModel)]="password" class="form-control">
+            </div>
+            <div class="col-md-2 col-md-offset-5">
+              <button class="btn btn-success" (click)="nspSendCoinToUser()">Send coin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

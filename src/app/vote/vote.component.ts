@@ -134,7 +134,6 @@ export class VoteComponent implements OnInit {
     this.Ballot.deployed().then(function (instance) {
       ballot = instance;
       const id_program = self.id_program;
-      debugger;
       ballot.voteUpdate(id_program, actor_id, Number(self.wei), { from: self.account, gas: 3000000 }).then(function (value) {
           console.log(value);
         self.loadCoin();
@@ -142,12 +141,12 @@ export class VoteComponent implements OnInit {
           if (self.current_coin>self.tmp) {
             console.log(self.tmp);
             console.log(self.current_coin);
-            alert("vote thanh cong\n");  
+            // alert("vote thanh cong\n");  
           }
           else {
             console.log(self.tmp);
             console.log(self.current_coin);
-            alert("vote that bai");
+            // alert("vote that bai");
           }
         });
         }).catch(function (e) {
